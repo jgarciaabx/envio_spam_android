@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity() {
                     lifecycleScope.launch(Dispatchers.IO) {
                         // Enviar mensaje
                         enviarMensaje(phoneNumber, message)
+                        withContext(Dispatchers.Main) {
+                            // Actualizar UI
+                            mensaje.text.clear()
+                        }
+
                     }
                 }else{
                     Toast.makeText(applicationContext, "Ingrese un número de teléfono y un mensaje", Toast.LENGTH_SHORT).show()
